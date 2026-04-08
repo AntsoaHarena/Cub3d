@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: harramar <harramar@student.42antanana      +#+  +:+       +#+        */
+/*   By: harramar <harramar@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/06 06:34:02 by harramar          #+#    #+#             */
-/*   Updated: 2025/03/25 11:38:21 by harramar         ###   ########.fr       */
+/*   Updated: 2026/04/07 07:38:27 by harramar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

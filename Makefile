@@ -1,6 +1,6 @@
 NAME = cub3d
 
-SRC = main.c utils_color.c utils_texture.c init.c parsing.c utils.c\
+SRC = main.c utils_color.c utils_texture.c init.c parsing.c utils.c other_utils.c\
 	get_next_line/get_next_line.c\
 	get_next_line/get_next_line_utils.c
 

@@ -6,7 +6,7 @@
 /*   By: harramar <harramar@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/03 13:10:51 by harramar          #+#    #+#             */
-/*   Updated: 2026/04/03 13:47:14 by harramar         ###   ########.fr       */
+/*   Updated: 2026/04/07 11:26:27 by harramar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,18 +46,18 @@ int	parse_element_color(char **rgb_split, int *rgb)
 	{
 		if (is_numeric(rgb_split[i]) == 0)
 		{
-			ft_putendl_fd("Error: Color must be numeric and positive", 2);
+			ft_putendl_fd("Error\nColor must be numeric and positive", 2);
 			return (free_split(rgb_split), 0);
 		}
 		if (len_color(rgb_split[i]) > 3)
 		{
-			ft_putendl_fd("Error: Color range must be [0, 255]", 2);
+			ft_putendl_fd("Error\nColor range must be [0, 255]", 2);
 			return (free_split(rgb_split), 0);
 		}
 		rgb[i] = ft_atoi(rgb_split[i]);
 		if (rgb[i] < 0 || rgb[i] > 255)
 		{
-			ft_putendl_fd("Error: Color range must be [0, 255]", 2);
+			ft_putendl_fd("Error\nColor range must be [0, 255]", 2);
 			return (free_split(rgb_split), 0);
 		}
 		i++;
@@ -76,7 +76,7 @@ int	store_data_color(char **rgb_split, char *line, int *rgb, t_data *data)
 		data->c_color = final_color;
 	else
 	{
-		ft_putendl_fd("Error: Duplicate color identifier", 2);
+		ft_putendl_fd("Error\nDuplicate color identifier", 2);
 		free_split(rgb_split);
 		return (0);
 	}

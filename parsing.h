@@ -6,7 +6,7 @@
 /*   By: harramar <harramar@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/02 07:01:49 by harramar          #+#    #+#             */
-/*   Updated: 2026/04/03 13:44:43 by harramar         ###   ########.fr       */
+/*   Updated: 2026/04/07 11:07:43 by harramar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,5 +49,6 @@ void		free_split(char **tab);
 int			is_numeric(char *str);
 int			is_complete(t_data *data);
 int			is_map_line(char *line);
+char		**split_space_and_tab(char const *s);
 
 #endif

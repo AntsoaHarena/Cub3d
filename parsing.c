@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fanraman <fanraman@student.42antananari    +#+  +:+       +#+        */
+/*   By: harramar <harramar@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/02 07:01:25 by harramar          #+#    #+#             */
-/*   Updated: 2026/04/03 14:34:32 by fanraman         ###   ########.fr       */
+/*   Updated: 2026/04/07 11:27:04 by harramar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,10 @@ int	parse_texture(char *line, t_data *data)
 {
 	char	**line_split;
 
-	line_split = ft_split(line, ' ');
+	line_split = split_space_and_tab(line);
 	if (!line_split || !line_split[1] || line_split[2])
 	{
-		ft_putendl_fd("Error: Invalid texture format", 2);
+		ft_putendl_fd("Error\nInvalid texture format", 2);
 		free_split(line_split);
 		return (0);
 	}
@@ -42,7 +42,7 @@ int	parse_color(char *line, t_data *data)
 	if (count_comma(color) > 2 || !rgb_split || !rgb_split[0] || !rgb_split[1]
 		|| !rgb_split[2] || rgb_split[3])
 	{
-		ft_putendl_fd("Error: Invalid color format", 2);
+		ft_putendl_fd("Error\nInvalid color format", 2);
 		free_split(rgb_split);
 		return (0);
 	}
@@ -58,7 +58,7 @@ int	parse_texture_and_color(char *line, char *line_trimmed, t_data *data)
 {
 	if (line_trimmed == NULL)
 	{
-		ft_putendl_fd("Error: Malloc failed", 2);
+		ft_putendl_fd("Error\nMalloc failed", 2);
 		return (0);
 	}
 	if (is_texture(line_trimmed) == 1)
@@ -91,7 +91,7 @@ int	parsing(int fd, t_data *data)
 		if (*line_trimmed != '\0' && parse_texture_and_color(line, line_trimmed,
 				data) == 0)
 			return (0);
-		else if (*line_trimmed != '\0' && is_complete(data) == 1
+		if (*line_trimmed != '\0' && is_complete(data) == 1
 			&& is_map_line(line_trimmed) == 1)
 		{
 			data->map_first_line = line;
@@ -102,7 +102,7 @@ int	parsing(int fd, t_data *data)
 	}
 	if (is_complete(data) == 0)
 	{
-		ft_putendl_fd("Error: Missing configuration elements", 2);
+		ft_putendl_fd("Error\nMissing configuration elements", 2);
 		return (0);
 	}
 	return (1);

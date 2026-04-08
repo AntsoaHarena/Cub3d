@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_split.c                                         :+:      :+:    :+:   */
+/*   other_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: harramar <harramar@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/17 08:36:08 by harramar          #+#    #+#             */
-/*   Updated: 2026/04/07 07:38:19 by harramar         ###   ########.fr       */
+/*   Created: 2026/04/07 07:39:29 by harramar          #+#    #+#             */
+/*   Updated: 2026/04/07 07:55:44 by harramar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "parsing.h"
 
-static int	ft_count(char const *str, char c)
+static int	count_word(char const *str)
 {
 	int	i;
 	int	count;
@@ -21,13 +21,13 @@ static int	ft_count(char const *str, char c)
 	i = 0;
 	while (str[i] != '\0')
 	{
-		while (str[i] == c)
+		while (str[i] == ' ' || str[i] == '\t')
 		{
 			i++;
 		}
 		if (str[i])
 		{
-			while (str[i] && str[i] != c)
+			while (str[i] && (str[i] != ' ' || str[i] != '\t'))
 				i++;
 			count++;
 		}
@@ -35,14 +35,14 @@ static int	ft_count(char const *str, char c)
 	return (count);
 }
 
-char	**ft_split(char const *s, char c)
+char	**split_space_and_tab(char const *s)
 {
 	char	**str;
 	int		i;
 	int		j;
 	int		len;
 
-	str = (char **)malloc(sizeof(char *) * (ft_count(s, c) + 1));
+	str = (char **)malloc(sizeof(char *) * (count_word(s) + 1));
 	if (str == NULL)
 		return (NULL);
 	j = 0;
@@ -50,10 +50,10 @@ char	**ft_split(char const *s, char c)
 	len = 0;
 	while (s[i])
 	{
-		while (s[i] == c)
+		while (s[i] == ' ' || s[i] == '\t')
 			i++;
 		len = i;
-		while (s[i] != '\0' && s[i] != c)
+		while (s[i] != '\0' && (s[i] != ' ' && s[i] != '\t'))
 			i++;
 		if (len < i)
 			str[j++] = ft_substr(s, len, (i - len));
